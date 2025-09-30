@@ -1,10 +1,10 @@
-import Navbar from '@/react-app/components/Navbar';
-import Hero from '@/react-app/components/Hero';
-import About from '@/react-app/components/About';
-import Properties from '@/react-app/components/Properties';
-import Services from '@/react-app/components/Services';
-import Contact from '@/react-app/components/Contact';
-import Footer from '@/react-app/components/Footer';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import About from '@/components/About';
+import Properties from '@/components/Properties';
+import Services from '@/components/Services';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
