@@ -1,17 +1,20 @@
 import path from "path";
+import fs from "fs";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import { mochaPlugins } from "@getmocha/vite-plugins";
 
 const isNetlify = process.env.NETLIFY === "true";
+const hasWorkerEntry = fs.existsSync(path.resolve(__dirname, "./src/worker/index.ts"));
+const includeCloudflare = !isNetlify && hasWorkerEntry;
 
 export default defineConfig({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   plugins: [
     ...mochaPlugins(process.env as any),
     react(),
-    ...(isNetlify ? [] : [cloudflare()]),
+    ...(includeCloudflare ? [cloudflare()] : []),
   ],
   server: {
     allowedHosts: true,
