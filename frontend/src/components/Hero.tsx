@@ -1,6 +1,8 @@
 import { ArrowRight, MapPin, Star } from 'lucide-react';
+import { getBrandConfig } from '@/brand';
 
 export default function Hero() {
+  const brand = getBrandConfig();
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -32,7 +34,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Discover Dubai's finest properties with WM Real Estate. 
+            Discover Dubai's finest properties with {brand.brandName}. 
             Your trusted partner for luxury residential and commercial investments.
           </p>
 

@@ -1,6 +1,8 @@
 import { MapPin, Phone, Mail, Instagram, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { getBrandConfig } from '@/brand';
 
 export default function Footer() {
+  const brand = getBrandConfig();
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
@@ -38,13 +40,13 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
               <img 
-                src="https://mocha-cdn.com/01999a3b-70af-7067-b844-df0195d9ae07/465889928_426530636946501_7422564998101757670_n_1.jpg" 
-                alt="WM Real Estate" 
+                src={brand.logoUrl}
+                alt={brand.brandName}
                 className="h-10 w-10 rounded-full object-cover"
               />
               <div>
-                <h3 className="text-white font-bold text-lg">WM Real Estate</h3>
-                <p className="text-gray-400 text-xs">Dubai Premium Properties</p>
+                <h3 className="text-white font-bold text-lg">{brand.brandName}</h3>
+                <p className="text-gray-400 text-xs">{brand.tagline}</p>
               </div>
             </div>
             
@@ -55,15 +57,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-red-400 flex-shrink-0" />
-                <span className="text-gray-300 text-sm">Ramallah, Al Masyoun, Near to Al Masyoun School</span>
+                <span className="text-gray-300 text-sm">{brand.addressLines.join(', ')}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-red-400 flex-shrink-0" />
-                <span className="text-gray-300 text-sm">+970 595 390 378</span>
+                <span className="text-gray-300 text-sm">{brand.phonePrimary}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-red-400 flex-shrink-0" />
-                <span className="text-gray-300 text-sm">support@wmrealestate.online</span>
+                <span className="text-gray-300 text-sm">{brand.email}</span>
               </div>
             </div>
           </div>
@@ -169,8 +171,8 @@ export default function Footer() {
               © {currentYear} WM Real Estate. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-red-400 transition-colors">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-red-400 transition-colors">Terms of Service</a>
+              <a href="/privacy-policy" className="text-gray-400 hover:text-red-400 transition-colors">Privacy Policy</a>
+              <a href="/terms-of-service" className="text-gray-400 hover:text-red-400 transition-colors">Terms of Service</a>
               <a href="#" className="text-gray-400 hover:text-red-400 transition-colors">Cookie Policy</a>
             </div>
           </div>

@@ -1,7 +1,9 @@
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
+import { getBrandConfig } from '@/brand';
 import { useState } from 'react';
 
 export default function Contact() {
+  const brand = getBrandConfig();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,19 +29,19 @@ export default function Contact() {
     {
       icon: MapPin,
       title: "Visit Our Office",
-      details: ["Business Bay, Dubai", "United Arab Emirates"],
+      details: brand.addressLines,
       action: "Get Directions"
     },
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+971 4 XXX XXXX", "+971 50 XXX XXXX"],
+      details: [brand.phonePrimary, ...(brand.phoneSecondary ? [brand.phoneSecondary] : [])],
       action: "Call Now"
     },
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@wmrealestate.ae", "sales@wmrealestate.ae"],
+      details: [brand.email],
       action: "Send Email"
     },
     {
